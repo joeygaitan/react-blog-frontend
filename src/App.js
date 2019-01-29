@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import AddBlog from './components/addblog';
-import Home from './components/home';
-import Blog from './components/blog';
+import Home from './components/Home';
+import Blog from './components/Blog';
 import axios from 'axios';
 
-//add react router
 class App extends Component {
 
   constructor(props){
@@ -68,7 +67,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-        {/* <BlogItems items = {this.state.blogs}/> */}
         <Switch>
         <Route exact path='/' render = {(props) => <Home {...props} items = {this.state.blogs}/>}/>
         <Route path='/addblog' render = {(props) => <AddBlog {...props} add = {this.addBlog}/>}/>

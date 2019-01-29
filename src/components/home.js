@@ -1,6 +1,6 @@
 import React from 'react';
-import BlogItems from './blogitems';
-import Header from './header';
+import BlogItems from './BlogItems';
+import Header from './Header';
 
 const Home = props => 
   <div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HeaderNo from './headerno';
+import HeaderNo from './HeaderNo';
 import { Link } from 'react-router-dom';
 
 class AddBlog extends Component {

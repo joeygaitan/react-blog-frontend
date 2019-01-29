@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from './header';
+import Header from './Header';
 import { Link } from 'react-router-dom';
-import UpdateBlog from './updateblog';
-import BlogItems from './blogitems';
+import UpdateBlog from './UpdateBlog';
+import BlogItems from './BlogItems';
 
 
 class Blog extends Component {
