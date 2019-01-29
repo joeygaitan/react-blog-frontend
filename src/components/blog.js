@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './header';
 import { Link } from 'react-router-dom';
 import UpdateBlog from './updateblog';
+import BlogItems from './blogitems';
 
 
 class Blog extends Component {
@@ -10,6 +11,7 @@ class Blog extends Component {
         super(props)
 
         this.state = {
+            blogs : [],
             blog : {},
             open: false
         }
@@ -51,12 +53,19 @@ class Blog extends Component {
       }
 
     render() {
+        console.log(this.props.getBlogs)
         return ( 
             <div>
             <Header/>
             <div className="container">
                     <div className="row">
-                        <div className="col-8-sm"> 
+                        
+                    </div>
+                    <div className="row">
+                        <div className="col-4-sm">
+                        <BlogItems items = {this.state.blogs}/>
+                        </div>
+                        <div className="col-4-sm"> 
                                     <div className="card" style={{width: "18rem"}}>
                                     <div className="card-body">
                                     <h5 className="card-title">{this.state.blog.header}</h5>

@@ -17,8 +17,6 @@ class App extends Component {
   }
 
   componentDidMount = async () => { 
-    
-
     this.getBlogs()
   }
  
@@ -74,7 +72,7 @@ class App extends Component {
         <Switch>
         <Route exact path='/' render = {(props) => <Home {...props} items = {this.state.blogs}/>}/>
         <Route path='/addblog' render = {(props) => <AddBlog {...props} add = {this.addBlog}/>}/>
-        <Route path= '/:id' render = {(props) => <Blog {...props} delete = {this.deleteBlog} update = {this.updateBlog} getBlogs={this.getBlogs}/>}/>
+        <Route path= '/:id' render = {(props) => <Blog {...props} delete = {this.deleteBlog} update = {this.updateBlog} getBlogs={this.state.blogs}/>}/>
         </Switch>
         </div>
       </BrowserRouter>
