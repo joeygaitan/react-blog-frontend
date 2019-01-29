@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import BlogItems from './components/blogitems';
 import AddBlog from './components/addblog';
 import Home from './components/home';
+import Blog from './components/blog';
+import axios from 'axios';
+import BlogItems from "./components/blogitems";
+
 
 //add react router
 class App extends Component {
@@ -15,66 +18,70 @@ class App extends Component {
     }
   }
 
+  componentDidMount = async () => { 
+    
 
-
-  componentDidMount = () => { 
     this.getBlogs()
   }
  
   getBlogs = async () => {
-    try{
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/blogs`)
-      const blogs = await res.json()
-      this.setState({ blogs } )
-    }
-    catch(e){
-      console.error(e)
-    }
+      axios.get(`${process.env.REACT_APP_API_URL}/blogs`)
+      .then(res=>{
+        const blogs = res.data;
+        this.setState({ blogs })
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
   }
 
   addBlog = async (blog) => {
-    // post reqest
-    const res = await fetch(`{process.env.REACT_APP_API_URL}/blogs`, {
-      method: 'POST',
-      body: JSON.stringify(blog),
-      headers: {
-        'Content-type': 'Tpplication.json',
-        'Accept': 'application/json'
-      },
-      body: {
-        "header":this.state.blogs.header,
-        "desc":this.state.blogs.desc
-      }
-    })
-    this.getBlogs()
+
+    axios.post(`${process.env.REACT_APP_API_URL}/blogs`, blog)
+      .then(res => {
+        console.log(res.data);
+        this.getBlogs()
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
   } 
 
-  // async createItem(item) {
-  //   const response = await fetch('http://localhost:8082/api/people', {
-  //     method: 'POST',
-  //     body: JSON.stringify(item),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     }
-  //   })
-  //   const person = await response.json()
-  //   this.setState({people: [...this.state.people, person]})
-  // }
+  deleteBlog = async (id) => {
+  
+    axios.delete(`${process.env.REACT_APP_API_URL}/blogs/${id}`)
+    .then(res => {
+      console.log(res.data)
+      this.getBlogs()
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  }
 
-
+  updateBlog = async (id, blog) => {
+    axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
+    .then(res=>{
+      console.log(res.data);
+      this.getBlogs()
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+  
 
   render() {
     return (
       <BrowserRouter>
+        <div>
+        {/* <BlogItems items = {this.state.blogs}/> */}
         <Switch>
         <Route exact path='/' render = {(props) => <Home {...props} items = {this.state.blogs}/>}/>
-        <Route path='/addblog' component = {AddBlog}/>
-        {/* <Route exact path='/blogs' render = {(props)=> <blogs {...props} items = {this.state.blogs}/>}/> */}
-        {/* <Route exact path ='/blogs/:id' */}
-        {/* <Route path='/blogs/updateblog' render = {}/> */}
+        <Route path='/addblog' render = {(props) => <AddBlog {...props} add = {this.addBlog}/>}/>
+        <Route path= '/:id' render = {(props) => <Blog {...props} delete = {this.deleteBlog} update = {this.updateBlog} getblogs={this.getBlogs}/>}/>
         </Switch>
-        {/* <Route path='/'  render={(props) => <AddBlogs {...props} items = {this.state.blogs}/>}/> */}
+        </div>
       </BrowserRouter>
   
     );

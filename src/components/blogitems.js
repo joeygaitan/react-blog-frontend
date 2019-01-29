@@ -1,22 +1,25 @@
-import React from 'react';
-import home from './home';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-function BlogItems(props){
+class BlogItems extends Component {
+
+    render(){
         return (
-            <React.Fragment>
-                    
-                        <div className = "container">
-                        <row><h1>blogs</h1></row>
-                            <div className = "row">
-                                    <div className="list-group">
-                                        { props.items.map(blog =>
-                                            <a href="#" className="list-group-item list-group-item-action" key={blog.id}> {blog.header}</a>
-                                        )}
-                                    </div>
+                <React.Fragment>
+                            <div className = "container">
+                                <div className= "row"><h1>blogs</h1></div>
+                                <div className = "row">
+                                    
+                                            <div className="list-group">
+                                                { this.props.items.map(blog =>
+                                                    <Link to = {`/${blog.id}`}><button type="button" className="list-group-item list-group-item-action" key={blog.id}> {blog.header}</button></Link>
+                                                )}
+                                            </div>
+                                </div>
                             </div>
-                        </div>
-            </React.Fragment>
-        )
+                </React.Fragment>
+            )
+    }
 }
 
-export default BlogItems
+export default BlogItems;
