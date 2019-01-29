@@ -47,16 +47,6 @@ class Blog extends Component {
        this.setState({open: !this.state.open})
     }
 
-    // updateBlog = async (id, blog) => {
-    //     axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
-    //     .then(res=>{
-    //       this.getBlog()
-    //     })
-    //     .catch((error)=>{
-    //       console.log(error)
-    //     })
-    //   }
-
     render() {
         return ( 
             <div>
