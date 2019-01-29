@@ -16,12 +16,16 @@ class Blog extends Component {
         }
     }
     componentDidMount(){
+        this.getBlog()
+    }
+
+    getBlog = () => {
         const id = this.props.match.params.id
 
         axios.get(`${process.env.REACT_APP_API_URL}/blogs/${id}`)
         .then(res=>{
             const blog = res.data;
-            this.setState({ blog })
+            this.setState({ blog, open: false })
         })
         .catch((error)=>{
             console.log(error);
@@ -37,14 +41,18 @@ class Blog extends Component {
        this.setState({open: !this.state.open})
     }
 
-    reLoadBlogs = (event) => {
-        console.log(this.props);
-        
-        // this.props.getblogs()
-    }
+    updateBlog = async (id, blog) => {
+        axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
+        .then(res=>{
+          console.log(res.data);
+          this.getBlog()
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+      }
 
     render() {
-        console.log(this.props.getblogs)
         return ( 
             <div>
             <Header/>
@@ -60,7 +68,7 @@ class Blog extends Component {
                             </div>
                         </div>
                         <div className="col-4-sm">
-                            {this.state.open ? <UpdateBlog {...this.props} submitted = {this.ifClicked} reloader={this.reLoadBlogs}/> :  null}
+                            {this.state.open ? <UpdateBlog {...this.props} updateBlog = {this.updateBlog}/> :  null}
                         </div>
                     </div>
             </div>

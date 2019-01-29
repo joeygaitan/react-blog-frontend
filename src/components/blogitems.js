@@ -12,7 +12,7 @@ class BlogItems extends Component {
                                     
                                             <div className="list-group">
                                                 { this.props.items.map(blog =>
-                                                    <Link to = {`/${blog.id}`}><button type="button" className="list-group-item list-group-item-action" key={blog.id}> {blog.header}</button></Link>
+                                                    <Link to = {`/${blog.id}`} key={blog.id}><button type="button" className="list-group-item list-group-item-action" > {blog.header}</button></Link>
                                                 )}
                                             </div>
                                 </div>

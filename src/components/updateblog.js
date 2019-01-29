@@ -20,9 +20,8 @@ class UpdateBlog extends Component {
     updatedSubmit = (event) => {
         event.preventDefault();
 
-        this.props.update(this.props.match.params.id, this.state)
-        console.log(this.props.reloader(), 'I am in here please read me')
-        this.props.submitted()
+        this.props.updateBlog(this.props.match.params.id, this.state)
+        this.props.history.push(`/${this.props.match.params.id}`)
     } 
     
     render() { 
@@ -42,7 +41,7 @@ class UpdateBlog extends Component {
                         <button type="submit" className="btn btn-info btn-large">Update Blog</button>
                 </form>
                 <br/>
-                <Link to = {`/${this.props.match.params.id}`}><button className="btn btn-info btn-large">Cancel</button></Link>
+                <Link to = {`/`}><button className="btn btn-info btn-large">Cancel</button></Link>
             </div>
          );
     }
