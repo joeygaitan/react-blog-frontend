@@ -5,7 +5,7 @@ class HeaderNo extends Component {
         return (
             <div className="jumbotron">
                 <h1 className="">Joey's Blog</h1>
-                <p>I am steve the compiler</p>
+                <p>The Blog for me and you</p>
             </div>
         );
     }

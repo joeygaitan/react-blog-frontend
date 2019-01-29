@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BlogItems from './blogitems';
 import axios from 'axios';
 import Header from './header';
 import { Link } from 'react-router-dom';

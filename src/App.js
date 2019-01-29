@@ -4,8 +4,6 @@ import AddBlog from './components/addblog';
 import Home from './components/home';
 import Blog from './components/blog';
 import axios from 'axios';
-import BlogItems from "./components/blogitems";
-
 
 //add react router
 class App extends Component {
