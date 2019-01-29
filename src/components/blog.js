@@ -11,13 +11,18 @@ class Blog extends Component {
         super(props)
 
         this.state = {
-            blogs : [],
             blog : {},
             open: false
         }
     }
     componentDidMount(){
         this.getBlog()
+    }
+
+    static getDerivedStateFromProps(props, state){
+        return {
+            blog: props.blogs.find(ele => ele.id === props.match.params.id) || {}        
+        }
     }
 
     getBlog = () => {
@@ -42,40 +47,37 @@ class Blog extends Component {
        this.setState({open: !this.state.open})
     }
 
-    updateBlog = async (id, blog) => {
-        axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
-        .then(res=>{
-          this.getBlog()
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
-      }
+    // updateBlog = async (id, blog) => {
+    //     axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
+    //     .then(res=>{
+    //       this.getBlog()
+    //     })
+    //     .catch((error)=>{
+    //       console.log(error)
+    //     })
+    //   }
 
     render() {
-        console.log(this.props.getBlogs)
         return ( 
             <div>
             <Header/>
             <div className="container">
+                    <div><h1 style={{scrollPaddingLeft: "30px"}}>blogs</h1></div>
                     <div className="row">
-                        
-                    </div>
-                    <div className="row">
-                        <div className="col-4-sm">
-                        <BlogItems items = {this.state.blogs}/>
+                        <div className="col-md" style={{paddingBottom: "30px"}}>
+                        <BlogItems items = {this.props.blogs} UpdateBlog = {this.UpdateBlog}/>
                         </div>
-                        <div className="col-4-sm"> 
+                        <div className="col-md"> 
                                     <div className="card" style={{width: "18rem"}}>
                                     <div className="card-body">
-                                    <h5 className="card-title">{this.state.blog.header}</h5>
-                                    <p className="card-text">{this.state.blog.desc}</p>
+                                      <h5 className="card-title">{this.state.blog.header}</h5>
+                                      <p className="card-text">{this.state.blog.desc}</p>
                                     <button className="btn btn-info btn-large" onClick={this.ifClicked}>Update</button> <button className="btn btn-info btn-large" onClick={this.delete}>Delete</button> <Link to = '/'><button className="btn btn-info btn-large">Cancel</button></Link>
-                                </div>
-                            </div>
+                                    </div>
+                                    </div>
                         </div>
-                        <div className="col-4-sm">
-                            {this.state.open ? <UpdateBlog {...this.props} updateBlog = {this.updateBlog}/> :  null}
+                        <div className="col-md" style={{paddingBottom: "30px"}}>
+                            {this.state.open ? <UpdateBlog {...this.props} updateBlog = {this.props.update} ifClicked = {this.ifClicked}/> :  null}
                         </div>
                     </div>
             </div>

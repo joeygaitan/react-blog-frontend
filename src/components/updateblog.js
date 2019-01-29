@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class UpdateBlog extends Component {
     constructor(props) {
@@ -21,8 +20,13 @@ class UpdateBlog extends Component {
         event.preventDefault();
 
         this.props.updateBlog(this.props.match.params.id, this.state)
+        this.props.ifClicked()
         this.props.history.push(`/${this.props.match.params.id}`)
     } 
+
+    clicked =()=>{
+        this.props.ifClicked()
+    }
     
     render() { 
         return ( 
@@ -40,7 +44,7 @@ class UpdateBlog extends Component {
                         <button type="submit" className="btn btn-info btn-large">Update Blog</button>
                 </form>
                 <br/>
-                <Link to = {`/`}><button className="btn btn-info btn-large">Cancel</button></Link>
+                <button className="btn btn-info btn-large" onClick={this.clicked}>Cancel</button>
             </div>
          );
     }

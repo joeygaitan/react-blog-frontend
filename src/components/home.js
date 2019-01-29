@@ -5,7 +5,10 @@ import Header from './header';
 const Home = props => 
   <div>
     <Header/>
-    <BlogItems  items = {props.items}/>
+    <div className="container">
+      <div className= "row"><h1 style={{scrollPaddingLeft: "120px"}}>blogs</h1></div>
+      <BlogItems  items = {props.items}/>
+    </div>
   </div>
 
 export default Home
