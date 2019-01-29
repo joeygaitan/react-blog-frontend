@@ -37,7 +37,6 @@ class App extends Component {
 
     axios.post(`${process.env.REACT_APP_API_URL}/blogs`, blog)
       .then(res => {
-        console.log(res.data);
         this.getBlogs()
       })
       .catch((error)=>{
@@ -49,7 +48,6 @@ class App extends Component {
   
     axios.delete(`${process.env.REACT_APP_API_URL}/blogs/${id}`)
     .then(res => {
-      console.log(res.data)
       this.getBlogs()
     })
     .catch((error)=>{
@@ -60,7 +58,6 @@ class App extends Component {
   updateBlog = async (id, blog) => {
     axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
     .then(res=>{
-      console.log(res.data);
       this.getBlogs()
     })
     .catch((error)=>{

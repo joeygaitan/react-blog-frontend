@@ -43,7 +43,6 @@ class Blog extends Component {
     updateBlog = async (id, blog) => {
         axios.put(`${process.env.REACT_APP_API_URL}/blogs/${id}`, blog)
         .then(res=>{
-          console.log(res.data);
           this.getBlog()
         })
         .catch((error)=>{
