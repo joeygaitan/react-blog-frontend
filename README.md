@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Link to backend: https://github.com/joeygaitan/react-blog-backend
 
 What I learned:<br/>
-I learned how to use axios to get data from an api with react. I learned how components works with react and a got a stronger understanding of react-router.
+I learned how to use axios to get data from an api with react. In addition, I learned how components and props works with react and a got a stronger understanding of react-router.
 
 
 <strong>Things To improve<strong/>: <br/>
