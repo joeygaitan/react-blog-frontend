@@ -2,7 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Link to backend: https://github.com/joeygaitan/react-blog-backend
 
-Things To improve: <br/>
+
+<strong>Things To improve:<strong/> <br/>
 1:Give a Url <br/>
 2:Create a Log in page <br/>
 3:link to a database (sql,postgrsql(kenx.js)) <br/>
