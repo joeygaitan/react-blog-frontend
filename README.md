@@ -2,8 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Link to backend: https://github.com/joeygaitan/react-blog-backend
 
+What I learned:<br/>
+I learned how to use axios to get data from an api with react. I learned how components works with react and a got a stronger understanding of react-router.
 
-<strong>Things To improve:<strong/> <br/>
+
+<strong>Things To improve<strong/>: <br/>
 1:Give a Url <br/>
 2:Create a Log in page <br/>
 3:link to a database (sql,postgrsql(kenx.js)) <br/>
