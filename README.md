@@ -3,7 +3,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Link to backend: https://github.com/joeygaitan/react-blog-backend
 
 What I learned:<br/>
-I learned how to use axios to get data from an api with react. In addition, I learned how components and props works with react and a got a stronger understanding of react-router.
+I learned how to use AJAX requests with axios to get data from an api with react. In addition, I learned how components and props works with react and a got a stronger understanding of react-router.
+
+*To try out please fork and clone the backend and the frontend repositories.
+*Then in both repositories please do npm i to install npm packages.
+*in the backend do npm run dev to start the node local server
+*in the frontend repository do npm start to run the frontend repository
 
 
 <strong>Things To improve<strong/>: <br/>
